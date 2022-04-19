@@ -34,6 +34,9 @@ function UserInfo()
         {
             let client = addUser();
             user.push(client);
+            localStorage.setItem("USERS", JSON.stringify(user));
+            let data = JSON.parse(localStorage.getItem("USERS"));
+            console.log(data);
         }
         else
         {
@@ -88,7 +91,6 @@ function UserDiet()
                                 3- Medio
                                 4- Activo
                                 5- Pesado`));
-
     switch(option)
     {
         case 1: 
@@ -123,5 +125,39 @@ function Init()
     UserInfo();
     BasalMassIndex();
     UserDiet();
+    Start();
 }
+
+
+function Start()
+{
+    const nodoBtn = document.querySelector("#myBtn");
+    nodoBtn.addEventListener("click", ()=> Display());
+}
+
+function Display()
+{
+    const container = document.createElement("container")
+
+    container.innerHTML=`<h2>REGISTRO</h2>
+                        <ol>
+                            <li>Nombre:</li>
+                                <input type="text">
+                            <li>Apellido:</li>
+                                <input type="text">
+                            <li>Edad:</li>
+                                <input type="text">
+                            <li>Ciudad de residencia:</li>
+                                <input type="text">
+                            <li>Nacionalidad:</li>
+                                <input type="text">
+                        </ol>`
+
+    const menu = document.getElementById("menu");
+    menu.appendChild(container);
+}
+
+
+
+
 
